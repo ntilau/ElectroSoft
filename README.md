@@ -315,7 +315,7 @@ The bundled `mm`, `n2f` and `rfm` modules use only the core dependencies.
 
 ## License
 
-Copyright (c) 2010-2026 Laurent Ntibarikure.
+Copyright (c) 2008-2026 Laurent Ntibarikure.
 
 MIT License — see [LICENSE](LICENSE). The same single license file covers the
 repository and the bundled `mm`, `n2f` and `rfm` packages; their duplicate
