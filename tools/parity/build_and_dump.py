@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Build the cFES oracle harness and dump its arrays to a fixture.
+"""Build the FES C++ oracle harness and dump its arrays to a fixture.
 
-The harness compiles the real cFES sources (Shape.cpp, Quad.cpp, EleMat.cpp,
+The harness compiles the real FES C++ sources (Shape.cpp, Quad.cpp, EleMat.cpp,
 DoF.cpp, ...) and prints every array the Python reference path must reproduce.
 The output is committed as ``tests/fixtures/cpp_oracle.json`` so the parity
 test does not need a C++ toolchain.
 
 Usage::
 
-    python tools/parity/build_and_dump.py --cfes ../cFES
+    python tools/parity/build_and_dump.py --cfes ../FES
 
-The cFES tree is only read, never modified. Compilation happens in a
+The FES C++ tree is only read, never modified. Compilation happens in a
 temporary directory, so no build artifacts land in either repository.
 """
 
@@ -28,7 +28,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PARITY_DIR = Path(__file__).resolve().parent
 
-# Translation units from cFES that the harness links.  Mesh.cpp, Project.cpp
+# Translation units from FES C++ that the harness links.  Mesh.cpp, Project.cpp
 # and the TetGen/METIS importer are replaced by project_stub.cpp.
 CFES_SOURCES = [
     "Shape.cpp",
@@ -168,8 +168,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--cfes",
-        default=str(REPO_ROOT.parent / "cFES"),
-        help="path to the cFES checkout (default: ../cFES next to this repo)",
+        default=str(REPO_ROOT.parent / "FES"),
+        help="path to the FES C++ checkout (default: ../FES next to this repo)",
     )
     parser.add_argument(
         "--out",
@@ -195,7 +195,7 @@ def main() -> int:
 
     cfes = Path(args.cfes).expanduser().resolve()
     if not (cfes / "src" / "Shape.cpp").is_file():
-        raise SystemExit(f"--cfes: {cfes} does not look like a cFES checkout")
+        raise SystemExit(f"--cfes: {cfes} does not look like a FES C++ checkout")
 
     out_path = Path(args.out).expanduser().resolve()
     out_path.parent.mkdir(parents=True, exist_ok=True)

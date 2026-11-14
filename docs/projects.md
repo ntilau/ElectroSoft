@@ -1,4 +1,4 @@
-# Python project examples
+# ElectroSoft Python project examples
 
 The `fes.projects` package carries the legacy Python simulation projects and
 the DNN-GP surrogate models. They use the legacy assembly path
@@ -138,7 +138,7 @@ python -m fes mesh WaveGuide_py --out /tmp/meshes
 ```
 
 Default Triangle arguments are `pq34AfeQ` (quality mesh, 34° min angle, region
-attributes), matching the v0.1 C++ binary. `+poly_cmd` replaces the switch
+attributes), matching the FES C++ binary. `+poly_cmd` replaces the switch
 string after the leading `p`.
 
 ## Requirements

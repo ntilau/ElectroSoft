@@ -1,11 +1,11 @@
 // C++ oracle harness for fes.core.shape / shape3d / element_matrix / dof.
 //
-// Builds the *real* cFES classes (Shape.cpp, Quad.cpp, EleMat.cpp, DoF.cpp)
+// Builds the *real* FES C++ classes (Shape.cpp, Quad.cpp, EleMat.cpp, DoF.cpp)
 // and dumps every array the Python port has to reproduce, with 17 significant
 // digits.  tools/parity/build_and_dump.py compiles and runs this file and
 // writes tests/fixtures/cpp_oracle.json.
 //
-// The harness never writes into the cFES tree and does not import a mesh; the
+// The harness never writes into the FES C++ tree and does not import a mesh; the
 // small meshes used by tests/test_dof.py and tests/test_dof3d.py are filled
 // into the public Mesh members directly.
 

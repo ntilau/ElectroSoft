@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# FES — setup script
+# ElectroSoft — setup script
 # Creates a virtual environment, installs the package with all
 # dependencies, and verifies the installation.
 #
@@ -25,7 +25,7 @@ if [ -z "$PYTHON" ]; then
 fi
 
 PYVER="$("$PYTHON" -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
-echo "=== FES setup (python: $PYVER via $PYTHON) ==="
+echo "=== ElectroSoft setup (python: $PYVER via $PYTHON) ==="
 
 # 1. Create virtual environment
 if [ ! -d "$VENV" ]; then
@@ -64,7 +64,7 @@ fi
 echo "Verifying installation ..."
 "$VENV/bin/python" -c "
 from fes import constants
-print(f'FES OK')
+print(f'ElectroSoft OK')
 try:
     import torch; print(f'  torch {torch.__version__}')
 except: pass
@@ -108,7 +108,7 @@ fi
 # Verify at least one project can import
 PYVER="$("$VENV/bin/python" -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
 echo "Python:      $PYVER"
-echo "Package:     FES"
+echo "Package:     ElectroSoft (import package: fes)"
 echo ""
 echo "Quick test:  $VENV/bin/python -m pytest tests/ -v"
 echo "Run FDFD:    $VENV/bin/python -c 'from fes.projects import run_waveguide; run_waveguide()'"

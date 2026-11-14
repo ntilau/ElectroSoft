@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="fes",
-    # setuptools requires the field; FES does not track releases.
+    # setuptools requires the field; ElectroSoft does not track releases.
     version="0.0.0",
     license="MIT",
     packages=find_packages(),
@@ -25,9 +25,8 @@ setup(
     },
     python_requires=">=3.9",
     description=(
-        "2D/3D finite element solver for electromagnetics — "
-        "waveguide, filter, circulator, and thermal simulation "
-        "on triangular/tetrahedral meshes, with DNN-GP surrogate modelling"
+        "ElectroSoft: a Python prototyping framework for "
+        "computational electromagnetics"
     ),
     keywords=(
         "fem, finite-elements, electromagnetics, waveguide, "
@@ -42,7 +41,7 @@ setup(
         else ""
     ),
     long_description_content_type="text/markdown",
-    url="https://github.com/ntilau/FES",
+    url="https://github.com/ntilau/ElectroSoft",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",

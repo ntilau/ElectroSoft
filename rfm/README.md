@@ -7,12 +7,12 @@ Touchstone/JSON I/O, and extraction/conversion utilities. It is bundled under
 the MIT license (see the repository-root [`LICENSE`](../LICENSE)); the
 original package name was `pyrfm`.
 
-The package is independent of the FES finite-element pipeline and uses only
-NumPy, SciPy and Matplotlib (all core FES dependencies).
+The package is independent of the ElectroSoft finite-element pipeline and uses only
+NumPy, SciPy and Matplotlib (all core ElectroSoft dependencies).
 
 ## Installation
 
-`rfm` is part of the FES repository and is installed with it:
+`rfm` is part of the ElectroSoft repository and is installed with it:
 
 ```bash
 ./setup                # or: pip install -e .

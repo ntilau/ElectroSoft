@@ -1,4 +1,4 @@
-"""FES Python FEM package."""
+"""ElectroSoft — Python port of the FES finite-element solver."""
 
 from . import constants
 from . import mesh

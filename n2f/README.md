@@ -6,12 +6,12 @@ Kottler surface-current formulation in its vector form. It is bundled under
 the MIT license (see the repository-root [`LICENSE`](../LICENSE)); the
 original package name was `pyn2f`.
 
-The package is independent of the FES finite-element pipeline and uses only
+The package is independent of the ElectroSoft finite-element pipeline and uses only
 NumPy; Matplotlib is optional and used only by `n2f.plotting`.
 
 ## Installation
 
-`n2f` is part of the FES repository and is installed with it:
+`n2f` is part of the ElectroSoft repository and is installed with it:
 
 ```bash
 ./setup                # or: pip install -e .

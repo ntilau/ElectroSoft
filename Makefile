@@ -5,7 +5,7 @@ PY_VENV := .venv
 all: setup
 
 help:
-	@echo "=== FES (Python-only since v0.2) ==="
+	@echo "=== ElectroSoft — Python port of FES ==="
 	@echo "  make setup       Create .venv and install the package"
 	@echo "  make test        Run the pytest suite"
 	@echo ""

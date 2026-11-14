@@ -1,6 +1,6 @@
-"""Reference shape functions on the triangle in the cFES ordering.
+"""Reference shape functions on the triangle in the FES C++ ordering.
 
-This module transcribes ``cFES/src/Shape.cpp`` (``case 2: // TRIANGLE``)
+This module transcribes the FES C++ source ``src/Shape.cpp`` (``case 2: // TRIANGLE``)
 exactly, including the column ordering, the sign conventions, and the p=4
 cardinal basis.  It is the two-dimensional companion to
 :mod:`fes.core.shape3d`.
@@ -430,7 +430,7 @@ def shape_2d(
     points: np.ndarray,
     inv_j: np.ndarray | None = None,
 ) -> Shape2D:
-    """Evaluate the cFES scalar and H(curl) bases on a triangle.
+    """Evaluate the FES C++ scalar and H(curl) bases on a triangle.
 
     Parameters
     ----------

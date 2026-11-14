@@ -1,7 +1,7 @@
 # Bundled solver modules: `mm`, `n2f` and `rfm`
 
 Three independent Python packages live at the repository top level, alongside
-the `fes` package. They are self-contained and do **not** use either FES
+the `fes` package. They are self-contained and do **not** use either ElectroSoft
 numerical path (neither the reference assemblers nor the legacy
 `fes.core.assembly` path), and they do not touch the `.poly`/mesh pipeline.
 
@@ -13,7 +13,7 @@ numerical path (neither the reference assemblers nor the legacy
 
 All three packages are MIT-licensed (Copyright (c) 2010-2026 Laurent Ntibarikure).
 Their license texts are identical and have been merged into the single
-repository-root [`LICENSE`](../LICENSE), which covers FES and the bundled
+repository-root [`LICENSE`](../LICENSE), which covers ElectroSoft and the bundled
 packages alike; there are no per-package license copies.
 
 Each package carries its own README with the full API tour and examples:
@@ -47,7 +47,7 @@ python -m mm BifurcationE --no-plot
 python -m mm hildebrandfull        # aliases are case-insensitive
 ```
 
-Only NumPy and Matplotlib (already core FES dependencies) are needed;
+Only NumPy and Matplotlib (already core ElectroSoft dependencies) are needed;
 Matplotlib is imported lazily inside the plotting helpers.
 
 ## `n2f` — near-field to far-field

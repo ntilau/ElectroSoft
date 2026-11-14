@@ -1,6 +1,6 @@
-"""Reference shape functions on the tetrahedron in the cFES ordering.
+"""Reference shape functions on the tetrahedron in the FES C++ ordering.
 
-This module transcribes ``cFES/src/Shape.cpp`` (``case 3: // TETRAHEDRON``)
+This module transcribes the FES C++ source ``src/Shape.cpp`` (``case 3: // TETRAHEDRON``)
 exactly, including the column ordering and the places where the reference C++
 leaves derivative columns at zero.
 
@@ -475,7 +475,7 @@ def shape_3d(
     points: np.ndarray,
     inv_j: np.ndarray | None = None,
 ) -> Shape3D:
-    """Evaluate the cFES scalar and H(curl) bases on a tetrahedron.
+    """Evaluate the FES C++ scalar and H(curl) bases on a tetrahedron.
 
     Parameters
     ----------

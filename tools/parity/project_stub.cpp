@@ -1,8 +1,8 @@
-// Minimal definitions so the cFES numerical classes can be linked without the
+// Minimal definitions so the FES C++ numerical classes can be linked without the
 // mesh importer, METIS, or file I/O.
 //
 // Shape.cpp / Quad.cpp / EleMat.cpp / DoF.cpp / Coupl.cpp / Mtrl.cpp / BC.cpp
-// are compiled verbatim from the cFES source tree; this file supplies only the
+// are compiled verbatim from the FES C++ source tree; this file supplies only the
 // constructors and destructors of Project, Mesh and Option that those
 // translation units reference.  The harness fills the public Mesh members
 // directly, exactly as the real Project constructor would after importing a

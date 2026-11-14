@@ -1,15 +1,20 @@
-# FES — Finite Element Software
+# ElectroSoft
 
-[![build](https://github.com/ntilau/FES/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ntilau/FES/actions/workflows/build.yml?branch=main)
+[![build](https://github.com/ntilau/ElectroSoft/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ntilau/ElectroSoft/actions/workflows/build.yml?branch=main)
 
-FES is a 2D/3D finite element solver for computational electromagnetics based on
-the E-field formulation with H(curl) conforming elements. It supports S-parameter
+ElectroSoft is a Python prototyping framework for computational
+electromagnetics: a 2D/3D finite element solver based on the E-field
+formulation with H(curl) conforming elements. It supports S-parameter
 extraction, eigenmode analysis, electrostatics, incident plane waves, and
 far-field radiation patterns.
 
+It is the Python port of the FES (Finite Element Software) C++ codes from the
+ElectroSoft start-up. The Python import package remains `fes` (and the CLI is
+`python -m fes`), so the port mirrors the reference implementation's structure.
+
 ## Installation
 
-FES requires Python 3.9 or newer.
+ElectroSoft requires Python 3.9 or newer.
 
 ```bash
 make setup                     # create .venv and install the package (editable)
@@ -113,10 +118,10 @@ CLI flags (`+formula NAME`, `+em_e_fd`, ...) override the file tag.
 | `em_e_tl_eig` | 2D cross-section / 3D waveport eigenmodes |
 | `em_e_qs` | Electrostatic quasistatic (`f = 0`, use `+volt bnd V`) |
 
-The v0.1 C++ version's domain-decomposition (`em_e_fd_dd`) and nonlinear
-(`em_e_fd_nl`) assemblers are not ported: both abort inside the C++ version at
+The FES C++ version's domain-decomposition (`em_e_fd_dd`) and nonlinear
+(`em_e_fd_nl`) assemblers are not ported: both abort inside the FES C++ version at
 every input tried, so there is no reference result to compare against.
-`em_h_qs` is rejected by the C++ version's own dispatcher.
+`em_h_qs` is rejected by the FES C++ version's own dispatcher.
 
 ## CLI Options
 
@@ -161,7 +166,7 @@ every input tried, so there is no reference result to compare against.
 `+poly_cmd` supplies only the variable middle of the mesher switch string: the
 driver prefixes `p` and appends `AfeQ` (2D) or `AfeeQ` (3D), so `+poly_cmd q`
 yields TetGen's `pqAfeeQ` and `+poly_cmd q34` yields Triangle's `pq34AfeQ`.
-These defaults reproduce the C++ solver's meshes; changing them changes the
+These defaults reproduce the FES C++ solver's meshes; changing them changes the
 mesh and breaks numerical agreement.
 
 ## Architecture
@@ -273,7 +278,7 @@ file.
 A 2D model's mesh is loaded from `<name>.npz`; if absent it is meshed from the
 `.poly` and written back as `.npz`. `fes mesh --out DIR` writes the cache
 elsewhere. 3D models are meshed
-with TetGen on every run and are never cached, matching the C++ version.
+with TetGen on every run and are never cached, matching the FES C++ version.
 
 Native library discovery can be overridden with `FES_TRIANGLE` (Triangle) and
 `FES_TETGEN_LIB` (TetGen shim).

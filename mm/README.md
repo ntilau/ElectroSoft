@@ -2,16 +2,16 @@
 
 `mm` computes generalised scattering matrices (GSMs) for rectangular
 waveguide structures by mode matching. It is a Python port of a MATLAB
-toolbox, bundled with FES under the MIT license (see the repository-root
+toolbox, bundled with ElectroSoft under the MIT license (see the repository-root
 [`LICENSE`](../LICENSE)).
 
-The package is independent of the FES finite-element pipeline: it has no
+The package is independent of the ElectroSoft finite-element pipeline: it has no
 `.poly`/mesh dependency and uses only NumPy (Matplotlib is imported lazily by
 the plotting helpers).
 
 ## Installation
 
-`mm` is part of the FES repository and is installed with it:
+`mm` is part of the ElectroSoft repository and is installed with it:
 
 ```bash
 ./setup                # or: pip install -e .

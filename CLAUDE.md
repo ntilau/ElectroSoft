@@ -2,6 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+ElectroSoft is the Python port of the FES C++ finite-element codes from the
+ElectroSoft start-up; the Python import package is still `fes`.
+
 ## Essential commands
 
 The repo ships a venv at `.venv` (created by `./configure` / `make setup`). Activate it once so `python`, `pytest`, and `ruff` work directly:
@@ -39,7 +42,7 @@ CLI exit codes: `0` success, `1` usage error, `2` formulation not ported, `3` I/
 
 **Formulation phases** (`fes/api.py` FORMULATION_PHASE): `em_ez_fd`=2, `em_e_fd`=6, `em_e_eig_tl`=7, `em_e_tl_eig`=7, `em_e_fd_dd`=9 (not ported), `em_e_fd_nl`=10 (not ported), `em_e_qs`=11.
 
-`em_e_fd` (phase 6) is verified working: the Python assembler reproduces the C++ solver output (loop order, DOF numbering, formatting) and the full test suite passes (`pytest tests/ -q` → 0 failed). See the `em_e_fd_cpp_match` memory for the Matrix Market comparison details.
+`em_e_fd` (phase 6) is verified working: the Python assembler reproduces the FES C++ solver output (loop order, DOF numbering, formatting) and the full test suite passes (`pytest tests/ -q` → 0 failed). See the `em_e_fd_cpp_match` memory for the Matrix Market comparison details.
 
 **Mesh pipeline:** models live as `.poly` files in `data/`; `#Formula` selects the formulation. Triangle meshes 2D and writes an `.npz` cache next to the `.poly`; TetGen meshes 3D on every run and never caches (matching the FES C++ binary). Native mesher sources are expected under `dep/` and are not vendored as binaries.
 
@@ -50,7 +53,7 @@ CLI exit codes: `0` success, `1` usage error, `2` formulation not ported, `3` I/
 - Angles in radians for numerical solvers; degrees for excitation helpers (relevant to `n2f`).
 - Surface patches must be closed with outwardly directed normals for Huygens/Kottler integrals (`n2f`).
 - `.poly` format: TetGen PLC sections plus custom trailing sections; `#Regions` (alias `#Solids`) materials match mesh region attributes by line order; `#Boundaries` carries the boundary label.
-- Do not add per-package license copies — the root `LICENSE` covers FES and the bundled `mm`, `n2f`, `rfm` packages.
+- Do not add per-package license copies — the root `LICENSE` covers ElectroSoft and the bundled `mm`, `n2f`, `rfm` packages.
 
 ## No CLAUDE.md existed before
 

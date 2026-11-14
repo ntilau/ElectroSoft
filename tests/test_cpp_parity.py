@@ -1,11 +1,11 @@
-"""Bit-level parity with the reference C++ solver.
+"""Bit-level parity with the reference FES C++ solver.
 
 The fixture ``tests/fixtures/cpp_oracle.json`` is produced by
-``tools/parity/build_and_dump.py``, which compiles the real cFES
+``tools/parity/build_and_dump.py``, which compiles the real FES C++
 ``Shape.cpp`` / ``Quad.cpp`` / ``EleMat.cpp`` / ``DoF.cpp`` and dumps every
 array the Python reference path has to reproduce.  Regenerate it with::
 
-    python tools/parity/build_and_dump.py --cfes ../cFES
+    python tools/parity/build_and_dump.py --cfes ../FES
 
 The comparisons are tight (``atol=1e-10``): a swapped basis column or a shifted
 DOF number differs by O(1), so this catches both permutations and sign errors.
