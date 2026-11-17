@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idempy"
+version = "0.1.0"
+description = "Python port of the IdEM interconnect macromodeling toolbox"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "IdEM original authors: Stefano Grivet-Talocia, Michelangelo Bandinu, Andrea Ubolli" }]
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "matplotlib>=3.4",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["idempy*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "regression: end-to-end .sNp to rational-function macromodel regression tests",
+]
