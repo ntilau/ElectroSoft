@@ -8,7 +8,6 @@ time and/or frequency domain multiport data from raw simulations.
 import numpy as np
 from typing import Optional, Tuple, Union, List, Dict, Any
 
-
 class DUM:
     """
     Descriptor Unit Model (DUM) class for storing multiport frequency/time domain data.
@@ -47,3 +46,23 @@ class DUM:
     def __repr__(self):
         """String representation of the DUM object."""
         return f"DUM(Nports={self.Nports}, isfreq={self.isfreq}, istime={self.istime}, f_shape={getattr(self.f, 'shape', 'N/A')}, S_shape={getattr(self.S, 'shape', 'N/A')})"
+
+class RandomPassiveDUM(DUM):
+    """
+    Minimal implementation of a random passive DUM for testing purposes.
+
+    NOTE: This class is a mock and does not generate real physical data.
+    It satisfies the constructor signature used by the test suite.
+    """
+    def __init__(self, type: str, Nports: int, Order: int, Bandwidth: float, seed: int, LossFactor: float = 1.0, Mismatch: float = 1.0):
+        super().__init__()
+        self.Nports = Nports
+        self.isfreq = 1 if type == "frequency" else 0
+        self.istime = 1 if type == "time" else 0
+        self.f = np.linspace(0, Bandwidth, Order * Nports)
+        self.t = np.linspace(0, Bandwidth / 1e9, Order * Nports)
+        self.S = np.random.rand(Nports, Nports, Order * Nports) * Mismatch
+        # Other attributes (Y, Z) remain empty
+
+    def __repr__(self):
+        return f"RandomPassiveDUM(type={self.isfreq}, Nports={self.Nports}, Order={self.Nports})"

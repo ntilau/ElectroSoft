@@ -16,6 +16,7 @@ from scipy import linalg, optimize
 
 from ..dum import DUM
 from ..macromodel import Macromodel
+from ..utils.rfm_export import rfm_response
 
 
 def _initial_poles(normalized_freq: np.ndarray, n_poles: int) -> np.ndarray:
@@ -208,19 +209,6 @@ def vector_fit_inf_dc0(freq: np.ndarray, response: np.ndarray,
                       as_poles=True, enforce_stability=True)
 
 
-def _rfm_eval(freq: np.ndarray, poles: np.ndarray, residues: np.ndarray,
-              dc_gain: complex) -> np.ndarray:
-    """Evaluate the pole-residue RFM H(jw) = sum(r_k / (jw - p_k)) + dc_gain."""
-    jw = 1j * np.asarray(freq, dtype=float)
-    h = np.zeros_like(jw, dtype=complex)
-    residues = np.asarray(residues).ravel()
-    dc_gain = np.asarray(dc_gain).ravel()[0]
-    for p, r in zip(poles, residues):
-        h += r / (jw - p)
-    h += dc_gain
-    return h
-
-
 def _rfm_residual(params: np.ndarray, freq: np.ndarray, response: np.ndarray,
                   Np: int) -> np.ndarray:
     """Real-valued residual vector for least-squares fitting.
@@ -232,7 +220,7 @@ def _rfm_residual(params: np.ndarray, freq: np.ndarray, response: np.ndarray,
     poles = params[0:Np] + 1j * params[Np:2 * Np]
     residues = params[2 * Np:3 * Np] + 1j * params[3 * Np:4 * Np]
     d = params[4 * Np] + 1j * params[4 * Np + 1]
-    model = _rfm_eval(freq, poles, residues, d)
+    model = rfm_response(freq, poles, residues, d)
     error = response - model
     return np.concatenate([error.real, error.imag])
 
@@ -298,7 +286,7 @@ def vector_fit_refined(freq: np.ndarray, response: np.ndarray,
     h_ref = float(np.mean(np.abs(response))) or 1.0
 
     def _err(poles, residues, d):
-        model = _rfm_eval(freq, poles, residues, d)
+        model = rfm_response(freq, poles, residues, d)
         error = response - model
         return (np.sqrt(np.mean(np.abs(error) ** 2))
                 / np.sqrt(np.mean(np.abs(response) ** 2)))
