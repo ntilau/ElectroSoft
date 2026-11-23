@@ -30,7 +30,6 @@ data/*.h*.mat.npz
 *.bmp
 *_modes.txt
 *build/
-dep/
 matrix_WR90.txt
 
 # ML / surrogate artifacts and mesh caches (generated, never committed)

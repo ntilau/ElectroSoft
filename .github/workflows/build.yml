@@ -36,11 +36,12 @@ jobs:
       - name: Build native meshers (Triangle / TetGen)
         run: |
           set -euo pipefail
-          # Ensure submodules are initialized even though dep/ is gitignored
-          git submodule update --init >/dev/null 2>&1 || true
+          set -x
+          # Ensure submodules are initialized even though dep/ was gitignored
+          git submodule update --init
           # Ensure a C++ compiler is available for build_triangle.py / build_tetgen.py
           case "$RUNNER_OS" in
-            Linux*) sudo apt-get update -y && sudo apt-get install -y g++ make ;;
+            Linux*) sudo apt-get update -y && sudo apt-get install -y build-essential ;;
           esac
           python tools/build_triangle.py
           python tools/build_tetgen.py
