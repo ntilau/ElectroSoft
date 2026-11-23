@@ -36,6 +36,12 @@ jobs:
       - name: Build native meshers (Triangle / TetGen)
         run: |
           set -euo pipefail
+          # Ensure submodules are initialized even though dep/ is gitignored
+          git submodule update --init >/dev/null 2>&1 || true
+          # Ensure a C++ compiler is available for build_triangle.py / build_tetgen.py
+          case "$RUNNER_OS" in
+            Linux*) sudo apt-get update -y && sudo apt-get install -y g++ make ;;
+          esac
           python tools/build_triangle.py
           python tools/build_tetgen.py
           # Force-build verification: TetGen shared library must exist,
