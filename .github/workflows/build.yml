@@ -35,8 +35,17 @@ jobs:
 
       - name: Build native meshers (Triangle / TetGen)
         run: |
+          set -euo pipefail
           python tools/build_triangle.py
           python tools/build_tetgen.py
+          # Force-build verification: TetGen shared library must exist,
+          # otherwise 3D mesh tests silently fail later.
+          case "$RUNNER_OS" in
+            macOS*) lib=build/libtetgen.dylib ;;
+            Windows*) lib=build/tetgen.dll ;;
+            *) lib=build/libtetgen.so ;;
+          esac
+          test -f "$lib" || { echo "TetGen shared library $lib was not produced"; exit 1; }
 
       - name: Lint
         run: ruff check fes tools tests mm n2f rfm setup.py
