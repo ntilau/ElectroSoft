@@ -49,9 +49,9 @@ install_extras() {
     fi
 }
 
-if ! install_extras -e "$HERE[viz]" pytest; then
+if ! install_extras -e "$HERE[viz]" pytest ruff; then
     "$VENV/bin/python" -m pip install --quiet -e "$HERE"
-    "$VENV/bin/python" -m pip install --quiet pytest
+    "$VENV/bin/python" -m pip install --quiet pytest ruff
 fi
 
 # 3. Optional ML extras

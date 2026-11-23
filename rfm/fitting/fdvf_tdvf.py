@@ -17,7 +17,7 @@ from ..fitting.vectorfit import vector_fit
 from ..dum import DUM
 from ..macromodel import Macromodel
 import numpy as np
-from typing import Union
+from typing import Tuple, Union
 
 def FDVF(freq: np.ndarray, response: np.ndarray, **kwargs) -> Tuple[np.ndarray, np.ndarray, complex]:
     """Placeholder: Performs FDVF approximation, wrapping vector_fit."""

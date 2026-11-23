@@ -7,7 +7,7 @@ stability checks, and complex matrix operations, leveraging numpy and scipy.
 
 import numpy as np
 from scipy import linalg
-from typing import Union
+from typing import Tuple, Union
 
 def sparse_ham_eig(A: np.ndarray, tol: float = 1e-8) -> np.ndarray:
     """
